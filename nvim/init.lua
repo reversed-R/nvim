@@ -10,6 +10,8 @@ vim.g.mapleader = ' '
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 vim.keymap.set('n', '<C-v>', '<C-q>', {remap = true}) --cannot work...
 vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>')
+vim.keymap.set('n', '<leader>w', '<C-w><C-w>')
+vim.keymap.set('t', '<ESC>', '<C-\\><C-n>')
 
 
 require('hrk1/plugins/nvim_cursorline')
