@@ -21,3 +21,4 @@ require('hrk1/plugins/toggleterm')
 require('hrk1/plugins/nvim_ts_autotag')
 require('hrk1/plugins/nvim_autopairs')
 require('hrk1/plugins/nvim_treesitter')
+require('hrk1/plugins/hlchunk')--cannot work...
