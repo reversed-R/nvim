@@ -28,7 +28,7 @@ return {
           -- ["<Leader>l"] = { "]b" },
           -- ["<Leader>h"] = { "[b" },
           -- navigate buffer tabs -- extra setting by reversed_R
-          ["<Leader>l"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+          ["<Leader>j"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
           ["<Leader>h"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
         },
         t = {
