@@ -25,6 +25,8 @@ return {
           --["<Leader>w"] = { "<cmd>Neotree<cr>"},
           ["<Leader>w"] = { "<C-w>w", desc="Change window"},
           ["<Leader>t"] = { "<cmd>ToggleTerm<cr>" },
+          ["<C-j>"] = { "<C-d>" },
+          ["<C-k>"] = { "<C-u>" },
           -- ["<Leader>l"] = { "]b" },
           -- ["<Leader>h"] = { "[b" },
           -- navigate buffer tabs -- extra setting by reversed_R
