@@ -39,6 +39,7 @@ return {
           -- setting a mapping to false will disable it
           -- ["<esc>"] = false,
           ["<esc>"] = { "<C-\\><C-n>"},
+          ["jj"] = { "<C-\\><C-n>"},
         },
       },
     },
