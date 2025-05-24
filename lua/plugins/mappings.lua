@@ -27,6 +27,8 @@ return {
           ["<Leader>t"] = { "<cmd>ToggleTerm<cr>" },
           ["<C-j>"] = { "<C-d>" },
           ["<C-k>"] = { "<C-u>" },
+          [";"] = { "$" },
+          ["m"] = { "0" },
           -- ["<Leader>l"] = { "]b" },
           -- ["<Leader>h"] = { "[b" },
           -- navigate buffer tabs -- extra setting by reversed_R
