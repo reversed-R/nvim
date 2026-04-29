@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -79,6 +77,64 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+
+        -- Custom navigation mappings
+        ["<C-j>"] = { "<C-d>", desc = "Scroll down half page" },
+        ["<C-k>"] = { "<C-u>", desc = "Scroll up half page" },
+        [";"] = { "$", desc = "Jump to line end" },
+        ["m"] = { "0", desc = "Jump to line start" },
+
+        -- Leader key mappings
+        ["<Leader>t"] = {
+          function()
+            -- Check if there's already a terminal window open
+            local term_wins = vim.tbl_filter(function(win)
+              local buf = vim.api.nvim_win_get_buf(win)
+              return vim.bo[buf].buftype == "terminal"
+            end, vim.api.nvim_list_wins())
+
+            if #term_wins > 0 then
+              -- Close all terminal windows
+              for _, win in ipairs(term_wins) do
+                vim.api.nvim_win_close(win, false)
+              end
+            else
+              -- Find existing terminal buffer
+              local term_bufs = vim.tbl_filter(function(buf)
+                return vim.bo[buf].buftype == "terminal" and vim.api.nvim_buf_is_valid(buf)
+              end, vim.api.nvim_list_bufs())
+
+              -- Open a split at the bottom (1/3 height)
+              vim.cmd("split")
+              local height = math.floor(vim.o.lines / 3)
+              vim.api.nvim_win_set_height(0, height)
+
+              if #term_bufs > 0 then
+                -- Reuse existing terminal buffer
+                vim.api.nvim_win_set_buf(0, term_bufs[1])
+              else
+                -- Create new terminal
+                vim.cmd("terminal")
+              end
+
+              vim.cmd("startinsert") -- Enter terminal mode automatically
+            end
+          end,
+          desc = "Toggle terminal",
+        },
+        ["<Leader>j"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Move to left buffer" },
+        ["<Leader>k"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Move to right buffer" },
+        ["<Leader>w"] = { "<C-w>w", desc = "Move between windows" },
+      },
+      t = {
+        -- Terminal mode mappings
+        ["jj"] = { "<C-\\><C-n>", desc = "Exit terminal mode" },
+        ["<Esc>"] = { "<C-\\><C-n>", desc = "Exit terminal mode" },
+      },
+      v = {
+        -- Visual mode mappings
+        [";"] = { "$", desc = "Jump to line end" },
+        ["m"] = { "0", desc = "Jump to line start" },
       },
     },
   },
