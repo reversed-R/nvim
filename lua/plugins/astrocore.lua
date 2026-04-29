@@ -122,8 +122,8 @@ return {
           end,
           desc = "Toggle terminal",
         },
-        ["<Leader>j"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Move to left buffer" },
-        ["<Leader>k"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Move to right buffer" },
+        ["<Leader>h"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Move to left buffer" },
+        ["<Leader>j"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Move to right buffer" },
         ["<Leader>w"] = { "<C-w>w", desc = "Move between windows" },
       },
       t = {
